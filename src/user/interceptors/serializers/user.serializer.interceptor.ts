@@ -5,18 +5,28 @@ import {
   NestInterceptor,
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import {
+  PageNumberCounters,
+  PageNumberPagination,
+} from 'prisma-extension-pagination/dist/types';
 
 import { UserEntity } from '../../entities/user.entity';
 
 import { FindManyUsers, FindSingleUser } from '../../types/user.type';
+
+type UserSerializerIntercept =
+  | UserEntity
+  | ((PageNumberPagination & PageNumberCounters) | UserEntity[])[];
 
 @Injectable()
 export class UserSerializer implements NestInterceptor {
   intercept(
     context: ExecutionContext,
     next: CallHandler<FindSingleUser | FindManyUsers>,
-  ) {
+  ):
+    | Observable<UserSerializerIntercept>
+    | Promise<Observable<UserSerializerIntercept>> {
     return next.handle().pipe(
       map((data) => {
         if (Array.isArray(data)) {

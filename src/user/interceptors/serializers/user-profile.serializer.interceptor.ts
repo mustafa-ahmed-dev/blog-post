@@ -5,7 +5,7 @@ import {
   NestInterceptor,
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { UserWithBlogsEntity } from '@/user/entities/user-with-blog.entity';
 
@@ -16,7 +16,9 @@ export class UserProfileSerializer implements NestInterceptor {
   intercept(
     context: ExecutionContext,
     next: CallHandler<FindSingleUserWithProfile>,
-  ) {
+  ):
+    | Observable<UserWithBlogsEntity>
+    | Promise<Observable<UserWithBlogsEntity>> {
     return next.handle().pipe(map((data) => this.transformUser(data)));
   }
 
