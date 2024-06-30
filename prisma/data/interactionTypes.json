@@ -1,0 +1,34 @@
+[
+  {
+    "name": "like",
+    "interaction": "👍"
+  },
+  {
+    "name": "dislike",
+    "interaction": "👎"
+  },
+  {
+    "name": "love",
+    "interaction": "❤"
+  },
+  {
+    "name": "wow",
+    "interaction": "😮"
+  },
+  {
+    "name": "angry",
+    "interaction": "😡"
+  },
+  {
+    "name": "sad",
+    "interaction": "😢"
+  },
+  {
+    "name": "laugh",
+    "interaction": "😂"
+  },
+  {
+    "name": "neutral",
+    "interaction": "😐"
+  }
+]

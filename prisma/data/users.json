@@ -1,0 +1,786 @@
+[
+  {
+    "username": "Christine.Wolff83",
+    "email": "Christine.Wolff1@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$cHR1XBpcaCt2Si0K4B9D3A$qMma0vISV4JsH/dPbaKsEjd8PuS8A5HRWgJEnT1LMOA",
+    "role": "SuperAdmin",
+    "details": {
+      "create": {
+        "firstName": "Christine",
+        "middleName": "Parker",
+        "lastName": "Wolff",
+        "dateOfBirth": "1964-06-16T21:37:35.232Z"
+      }
+    }
+  },
+  {
+    "username": "Michele_McGlynn97",
+    "email": "Michele_McGlynn89@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$g8rKkl1ESt2z/Oa1k1wJEg$DOdXwCARUVEYvY906Wfc2T9HNZqbz5pgDuSGMn06x/s",
+    "role": "Admin",
+    "details": {
+      "create": {
+        "firstName": "Michele",
+        "middleName": "Ryan",
+        "lastName": "McGlynn",
+        "dateOfBirth": "1951-09-22T14:05:26.116Z"
+      }
+    }
+  },
+  {
+    "username": "Lavonne_Streich-Bernier10",
+    "email": "Lavonne_Streich-Bernier34@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$5xzIxcMbFmr7+hXbLB95dQ$YTtPg6CWMnqcSrYcCL92pBVUkrB+5dg060PxQFseHQk",
+    "role": "Admin",
+    "details": {
+      "create": {
+        "firstName": "Lavonne",
+        "middleName": "Hayden",
+        "lastName": "Streich-Bernier",
+        "dateOfBirth": "1952-07-22T16:50:47.777Z"
+      }
+    }
+  },
+  {
+    "username": "Lincoln_Hoeger",
+    "email": "Lincoln.Hoeger44@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$b/BGgfetqnYVjWoWoNapew$wwQZ1odoGQQOLPirHTWzq+FMjTSZVB5GW/liMAJJIzY",
+    "role": "Admin",
+    "details": {
+      "create": {
+        "firstName": "Lincoln",
+        "middleName": "Addison",
+        "lastName": "Hoeger",
+        "dateOfBirth": "1979-04-21T07:32:13.541Z"
+      }
+    }
+  },
+  {
+    "username": "Margarett_Wiza-Runte",
+    "email": "Margarett_Wiza-Runte87@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$YmM3Erb5jZhDSc8IxyFQzQ$M3UYvYDKj4/gVe5TZW68OJRYO5BsdbZUKLgm+TGaPXM",
+    "role": "Admin",
+    "details": {
+      "create": {
+        "firstName": "Margarett",
+        "middleName": "Cameron",
+        "lastName": "Wiza-Runte",
+        "dateOfBirth": "1999-05-13T23:49:32.080Z"
+      }
+    }
+  },
+  {
+    "username": "Eliza.Little",
+    "email": "Eliza_Little@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$nJTtC+Ad4ZlT3KY0NetlCQ$6JRIDFJz5QGFpJyYA6B57cUFRrVk8LfmGa0lx9NJnpw",
+    "role": "Admin",
+    "details": {
+      "create": {
+        "firstName": "Eliza",
+        "middleName": "Harper",
+        "lastName": "Little",
+        "dateOfBirth": "1986-10-09T03:40:37.924Z"
+      }
+    }
+  },
+  {
+    "username": "Destany.Quitzon",
+    "email": "Destany.Quitzon@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$2/Zc/lWSdyqPP1o7ogr3XA$ZBSpAPMgGS22udJoP/HkVdv26Dam2MrUA0X2vlfQg6U",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Destany",
+        "middleName": "Logan",
+        "lastName": "Quitzon",
+        "dateOfBirth": "1975-06-23T22:36:36.423Z"
+      }
+    }
+  },
+  {
+    "username": "Aurelie_Beatty71",
+    "email": "Aurelie_Beatty@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$PonMjuU6WycNCzfbccYS/g$H5kbMJYezjlWcg/FczT+e/a6PaC7eqpg0ytUsKhMxis",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Aurelie",
+        "middleName": "Jordan",
+        "lastName": "Beatty",
+        "dateOfBirth": "1953-03-09T23:32:10.329Z"
+      }
+    }
+  },
+  {
+    "username": "Reyna_Bogisich31",
+    "email": "Reyna.Bogisich@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$dKePtI+zlQqSj5czHNcvIg$N7H0LYCVNRenFK5l2vkRl5lYmPuIVeWVv7KxSz3LbDo",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Reyna",
+        "middleName": "Logan",
+        "lastName": "Bogisich",
+        "dateOfBirth": "2003-01-01T05:10:11.825Z"
+      }
+    }
+  },
+  {
+    "username": "Amanda_Gulgowski72",
+    "email": "Amanda.Gulgowski@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$VFF8OS2qpIbcVbqKYT/X+w$h9TPRqlqwukz8lJQ7crAFAAQQuap54efTSsUaqm7FbE",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Amanda",
+        "middleName": "Marlowe",
+        "lastName": "Gulgowski",
+        "dateOfBirth": "1977-08-15T08:31:38.066Z"
+      }
+    }
+  },
+  {
+    "username": "Carmelo.Volkman92",
+    "email": "Carmelo.Volkman92@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$jwdM5CNusfZqmX0Lo0xwTA$WCl2nZyPqp0QYbyIpcB79v1G9xdqOjJSC0p2YuHeb/Q",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Carmelo",
+        "middleName": "Jordan",
+        "lastName": "Volkman",
+        "dateOfBirth": "1953-05-07T20:21:59.071Z"
+      }
+    }
+  },
+  {
+    "username": "Zoe_Gerlach",
+    "email": "Zoe_Gerlach@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$CDy4r+zJxZxIQPwCMrtoGw$f0M9IipoKj9c3K7f9cykTHz1V9ibkL5yzsaJq7/43pM",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Zoe",
+        "middleName": "Drew",
+        "lastName": "Gerlach",
+        "dateOfBirth": "1976-08-22T19:44:05.178Z"
+      }
+    }
+  },
+  {
+    "username": "Miles.Lebsack",
+    "email": "Miles_Lebsack47@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$CqDtgj7l44Y5hsr6MlhZXg$BKYmgSBW6wiwDkm9FmahxpL75v5vEMu5Y9YHqs5Ec6A",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Miles",
+        "middleName": "Elliott",
+        "lastName": "Lebsack",
+        "dateOfBirth": "1985-05-30T05:31:56.481Z"
+      }
+    }
+  },
+  {
+    "username": "Marlene_Franecki9",
+    "email": "Marlene.Franecki15@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$+p+eEJyCGmpMLDRIiKT7mg$iBA1Xun0z1kNbezq03SV2xUwT6H5c+JyQCI1aHhHRcU",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Marlene",
+        "middleName": "Jules",
+        "lastName": "Franecki",
+        "dateOfBirth": "1961-02-22T06:02:31.290Z"
+      }
+    }
+  },
+  {
+    "username": "Daija.Breitenberg",
+    "email": "Daija_Breitenberg18@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$AF+grtWe3o+zMvpKvBL2fw$ldsb7k3IxKGI5LLsaePCG9b3wC8bmERKdg2Law3PVhA",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Daija",
+        "middleName": "Alex",
+        "lastName": "Breitenberg",
+        "dateOfBirth": "1965-09-22T13:46:51.806Z"
+      }
+    }
+  },
+  {
+    "username": "Darion.Emard",
+    "email": "Darion.Emard91@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$3G3HixIQzPc55fv4Moky+A$F+sPY+p+JRHnfrlr6+4y7JPWYkC8YQp6FEkAZH4tomU",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Darion",
+        "middleName": "James",
+        "lastName": "Emard",
+        "dateOfBirth": "1967-01-21T20:50:53.210Z"
+      }
+    }
+  },
+  {
+    "username": "Lilyan.Franey",
+    "email": "Lilyan.Franey@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$3HQ/rsx+xKXLpprSkzXcjg$T/CyRLUeNGJmNT+AJQyae8oFIRSQ4pupusaozUq+M9o",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Lilyan",
+        "middleName": "Elliott",
+        "lastName": "Franey",
+        "dateOfBirth": "2003-05-13T23:00:31.780Z"
+      }
+    }
+  },
+  {
+    "username": "Cayla.Marquardt",
+    "email": "Cayla_Marquardt48@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$dZispCDV4sum73EXOBtYAA$5NRMGtNtjpi+lYyg5xojDK/c5yCKDtx1KomUbOZCBhA",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Cayla",
+        "middleName": "Nico",
+        "lastName": "Marquardt",
+        "dateOfBirth": "1963-09-16T02:46:54.063Z"
+      }
+    }
+  },
+  {
+    "username": "Xzavier_Dare",
+    "email": "Xzavier.Dare@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$eMOzndIMyZC/KSdLiu//CQ$Pw4Q8EDnNSr7TfJ0iouwk2Rqrzm2NEEVZ8Dw1Lgh8GI",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Xzavier",
+        "middleName": "Bowie",
+        "lastName": "Dare",
+        "dateOfBirth": "1971-01-11T13:57:19.833Z"
+      }
+    }
+  },
+  {
+    "username": "Cordie.Waters54",
+    "email": "Cordie_Waters38@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$5hSd/OpFmamzvAt93yj4Hw$JCa+PtSsO+WKlrUo86StzyZpn475sDvwo+AjbxMSOPY",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Cordie",
+        "middleName": "Jaden",
+        "lastName": "Waters",
+        "dateOfBirth": "1949-04-30T17:49:45.133Z"
+      }
+    }
+  },
+  {
+    "username": "Shannon_Mante92",
+    "email": "Shannon.Mante@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$IRwOikFt1cXc33LdlcLSkA$BidC2MjN3DbOoR56UN7Hd3mTcgRaTz/Ti5EOUVJoM9g",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Shannon",
+        "middleName": "Corey",
+        "lastName": "Mante",
+        "dateOfBirth": "1963-05-09T00:28:23.110Z"
+      }
+    }
+  },
+  {
+    "username": "Hertha_Bechtelar",
+    "email": "Hertha_Bechtelar@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$5Fxlmqs64nvW3U27Tiorkw$L7emanoLMxI+HxXx6vfD/G7FDvh2lcLyYIIASmEiCK4",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Hertha",
+        "middleName": "Marlowe",
+        "lastName": "Bechtelar",
+        "dateOfBirth": "1988-09-30T20:39:46.039Z"
+      }
+    }
+  },
+  {
+    "username": "Pamela.Jast",
+    "email": "Pamela_Jast32@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$SfWlTNAN1Fy+X0raFLikRg$WKsb1ihXg2sIPcBftAWfggVhUITohgHdYmq3hr5h8Ok",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Pamela",
+        "middleName": "Taylor",
+        "lastName": "Jast",
+        "dateOfBirth": "1981-04-09T02:16:08.736Z"
+      }
+    }
+  },
+  {
+    "username": "Randall_VonRueden",
+    "email": "Randall_VonRueden@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$RvIBghevGu0+Rse68D68NQ$t0l1eUwgImPUSWx0iqkqm9isbbZ8LSY9/dBgfxe/KwQ",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Randall",
+        "middleName": "Reagan",
+        "lastName": "VonRueden",
+        "dateOfBirth": "1971-02-28T04:43:42.412Z"
+      }
+    }
+  },
+  {
+    "username": "Bobbie_Schaefer4",
+    "email": "Bobbie.Schaefer27@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$/jxTtCrwltz0iXhV5IdiLA$8NVM5GGpyZlarUAavFc+HEbVchjNwD2pLbjbvCk6I1Y",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Bobbie",
+        "middleName": "Gray",
+        "lastName": "Schaefer",
+        "dateOfBirth": "1996-02-25T23:52:12.178Z"
+      }
+    }
+  },
+  {
+    "username": "Lela.Hayes36",
+    "email": "Lela.Hayes@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$UC/7f2z1kgH3BDkRS6Smww$RYNJh0xpq07BFVf/tXHQBiepRjOokOEGq8KJUi8nwpg",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Lela",
+        "middleName": "Emerson",
+        "lastName": "Hayes",
+        "dateOfBirth": "1976-03-24T05:29:40.596Z"
+      }
+    }
+  },
+  {
+    "username": "Alford.Doyle",
+    "email": "Alford_Doyle34@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$BVaYFHO1xHRly90BWgfXRg$+Xnt1R6vJn2WgEjJKCm6C32UZo8po+M2HwZT+y9ImvY",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Alford",
+        "middleName": "Corey",
+        "lastName": "Doyle",
+        "dateOfBirth": "1988-08-13T14:46:10.366Z"
+      }
+    }
+  },
+  {
+    "username": "Maxine.Reichel89",
+    "email": "Maxine_Reichel79@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$180tC7LG7I/1sHPvM0zKfA$Lr4QMf8T7hPOh1fhLwuFztO94d35rBMN9wjvKMH3onI",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Maxine",
+        "middleName": "Cameron",
+        "lastName": "Reichel",
+        "dateOfBirth": "1990-04-05T02:00:46.499Z"
+      }
+    }
+  },
+  {
+    "username": "Jamarcus_Nader",
+    "email": "Jamarcus_Nader@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$/SC0EN5V/QuA4iFdPuz5PQ$Py7Lh5f6GmH0UZFmX6ptmQY3HU71lpooMtbR2lxezaw",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Jamarcus",
+        "middleName": "Emerson",
+        "lastName": "Nader",
+        "dateOfBirth": "1960-05-06T21:54:42.417Z"
+      }
+    }
+  },
+  {
+    "username": "Krystina.Turner60",
+    "email": "Krystina_Turner@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$BCc0eg6mi5d0xdv/1L1OBw$H9+I5v1w7JNWj6nxdmCRpRb4kxfj4er57PIFEkDHCj0",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Krystina",
+        "middleName": "Harper",
+        "lastName": "Turner",
+        "dateOfBirth": "1954-06-23T09:30:04.685Z"
+      }
+    }
+  },
+  {
+    "username": "Burdette_Tillman",
+    "email": "Burdette_Tillman25@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$jlfvLET0VEdAV6HV1BU3Vw$bNxH8MPuNtQlXomO7ZvfNxSea6lZI5hiF0l61jONrRU",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Burdette",
+        "middleName": "Emerson",
+        "lastName": "Tillman",
+        "dateOfBirth": "1989-07-07T20:33:19.583Z"
+      }
+    }
+  },
+  {
+    "username": "Willis.Abbott",
+    "email": "Willis_Abbott62@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$grUVHnm6NDykqisZ5S1fFQ$GL/KLB0XxP3lBmO+MDrXo8mPgHQrbLPV/2jtOHq+N+M",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Willis",
+        "middleName": "Shawn",
+        "lastName": "Abbott",
+        "dateOfBirth": "2001-07-13T15:03:11.393Z"
+      }
+    }
+  },
+  {
+    "username": "Gideon_Marks-Gleason12",
+    "email": "Gideon.Marks-Gleason@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$ygG6/wUOhWNXtmHvx0Mxwg$blQSvIyL4jx3RKxZC3YM1uVVGlZeKaSDVG1Q9mSdbDw",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Gideon",
+        "middleName": "Jules",
+        "lastName": "Marks-Gleason",
+        "dateOfBirth": "1986-05-18T13:40:44.616Z"
+      }
+    }
+  },
+  {
+    "username": "Anita_Zieme",
+    "email": "Anita_Zieme99@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$2Ep+RzyFDbNm0Wc8qX3aZQ$Z5rCe6t8RfgC0zNuM9NNqAMtUVNPEdOFVwvluZZIIRc",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Anita",
+        "middleName": "Ellis",
+        "lastName": "Zieme",
+        "dateOfBirth": "1953-09-08T07:25:06.999Z"
+      }
+    }
+  },
+  {
+    "username": "Josephine_Stamm56",
+    "email": "Josephine.Stamm87@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$sonh1tMkdWHyhes3vFj99Q$hQr7P2NfHsVJC4wxK+cE2Lj7oQV5UBIl//tsDUwEjg4",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Josephine",
+        "middleName": "Marlowe",
+        "lastName": "Stamm",
+        "dateOfBirth": "1956-07-01T22:10:17.844Z"
+      }
+    }
+  },
+  {
+    "username": "Philip_Yost54",
+    "email": "Philip_Yost@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$MMQqlDMATORisqAHHOVj+g$2CBCOO2IWEBlgLmjwKcLcQwHmp/SiyEPWhoC356Mk5M",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Philip",
+        "middleName": "Skyler",
+        "lastName": "Yost",
+        "dateOfBirth": "1982-08-09T19:09:00.088Z"
+      }
+    }
+  },
+  {
+    "username": "Zander.Goyette",
+    "email": "Zander_Goyette@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$utS6PG0umCrdSONpzbY4cQ$Smt0XL5EIm1HLa+by4Wqiijjfm6u7RAvSMtRUYC9kYM",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Zander",
+        "middleName": "Corey",
+        "lastName": "Goyette",
+        "dateOfBirth": "1987-11-02T02:44:27.825Z"
+      }
+    }
+  },
+  {
+    "username": "Albert.Leannon-Orn6",
+    "email": "Albert.Leannon-Orn25@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$E9bY2qIdLEk/+2YtzwG3/w$5kgYl7GrYp7onMnsgf8DiRKsi8MK1E/zinJ8xOEo9mo",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Albert",
+        "middleName": "James",
+        "lastName": "Leannon-Orn",
+        "dateOfBirth": "1951-09-03T02:02:54.015Z"
+      }
+    }
+  },
+  {
+    "username": "Freeman.Hickle",
+    "email": "Freeman.Hickle@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$VpHhCtLoe0U4m4XM/sC7Iw$ucAc27HmUMRFxN0mNVT91BTJFoPHh7x/2KTjAKsyhnU",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Freeman",
+        "middleName": "Nico",
+        "lastName": "Hickle",
+        "dateOfBirth": "1968-02-21T16:21:34.367Z"
+      }
+    }
+  },
+  {
+    "username": "Ora_Frami",
+    "email": "Ora_Frami@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$7HoPAg5QW6bNzw5JnRWY+w$BvnyPydw7KFVx0eh+VqUJifuI+TPmPi0k5/ldpn0bsQ",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Ora",
+        "middleName": "Addison",
+        "lastName": "Frami",
+        "dateOfBirth": "1977-05-20T10:43:02.047Z"
+      }
+    }
+  },
+  {
+    "username": "Avis_Macejkovic6",
+    "email": "Avis_Macejkovic@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$JdeBRLFkN/pIKSdsBh7yTA$v2gGvNYcs8rk3sJUPUGkUWMrJFfMHwO28HVeOeIHz/Q",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Avis",
+        "middleName": "Reign",
+        "lastName": "Macejkovic",
+        "dateOfBirth": "1990-05-06T02:18:43.779Z"
+      }
+    }
+  },
+  {
+    "username": "Madge.Toy",
+    "email": "Madge.Toy@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$VI9SUfOfoON1t1PA7QIVEA$P/cqmGP/q/Dpjjmz+6OiVGshPj7YvlqvdxFbqejefCg",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Madge",
+        "middleName": "Cameron",
+        "lastName": "Toy",
+        "dateOfBirth": "1954-09-20T00:58:45.324Z"
+      }
+    }
+  },
+  {
+    "username": "Robbie.Sauer63",
+    "email": "Robbie_Sauer@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$3Vj1wfhomXhVNT7A4mGqrQ$fOQoHqR/JEMcbvWwTi/UoAYXfRxgCVOzVwHLL6Ft6ww",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Robbie",
+        "middleName": "Reign",
+        "lastName": "Sauer",
+        "dateOfBirth": "1961-05-26T05:39:28.921Z"
+      }
+    }
+  },
+  {
+    "username": "Gabriella.Kuhn",
+    "email": "Gabriella.Kuhn@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$0CD90SWZtQLr8H40LBZvrg$uySoopp08JUObaeM6C/zpg1ZWS3IaiCg2Kgl4aQyfiY",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Gabriella",
+        "middleName": "Jules",
+        "lastName": "Kuhn",
+        "dateOfBirth": "1965-02-02T23:22:47.429Z"
+      }
+    }
+  },
+  {
+    "username": "Emely_Luettgen",
+    "email": "Emely.Luettgen89@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$+oemCgGNoJgnvK3MqaToVw$CsQGXcEzgVzw+vAgpPu0yWGyTrS+lVuuK8CKdDwE9I0",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Emely",
+        "middleName": "Billie",
+        "lastName": "Luettgen",
+        "dateOfBirth": "1947-02-22T16:36:01.509Z"
+      }
+    }
+  },
+  {
+    "username": "Gerard.Gutkowski",
+    "email": "Gerard_Gutkowski@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$Ya7aEQSxjZk3pq9aP54BPg$OzVdRF4cW/e0M+Pn8xU5UVOc0Qi3mbia7pVstT+xj6c",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Gerard",
+        "middleName": "Austin",
+        "lastName": "Gutkowski",
+        "dateOfBirth": "1992-09-18T16:59:39.154Z"
+      }
+    }
+  },
+  {
+    "username": "Laila_Zieme31",
+    "email": "Laila.Zieme29@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$3+qq0T+Gq/aMHbul9yw//g$+mk6u6lLDq5cv1c/gvN6wCajapVHY1+uzj1PFVu67bQ",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Laila",
+        "middleName": "Parker",
+        "lastName": "Zieme",
+        "dateOfBirth": "1995-01-22T08:49:06.741Z"
+      }
+    }
+  },
+  {
+    "username": "Krystina.Hyatt",
+    "email": "Krystina.Hyatt31@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$3zRpsv2wEwRY/OkD2UGDfQ$l/TzpW2MTB9+NDH5QeT7mrMgCzs3m4R1fjJV5Vwmjb4",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Krystina",
+        "middleName": "Emerson",
+        "lastName": "Hyatt",
+        "dateOfBirth": "1962-02-28T06:49:45.652Z"
+      }
+    }
+  },
+  {
+    "username": "Dangelo.Huels75",
+    "email": "Dangelo.Huels53@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$QU2u28t08Tv6ErMzZ/qHoQ$02VKkQiiZW6Kwef8OX+YQn9z/R5aDekJ9eI8doMIJvg",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Dangelo",
+        "middleName": "Phoenix",
+        "lastName": "Huels",
+        "dateOfBirth": "1981-01-07T14:29:04.902Z"
+      }
+    }
+  },
+  {
+    "username": "Jacinthe.Glover10",
+    "email": "Jacinthe.Glover86@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$V7GQTkYoD1AkIwpxBYiMWw$qXS8WG3NHzzbbAmqi22QwBWyqyqJeZ7MA1uZJD1uDHo",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Jacinthe",
+        "middleName": "Jaden",
+        "lastName": "Glover",
+        "dateOfBirth": "2003-01-07T09:59:50.309Z"
+      }
+    }
+  },
+  {
+    "username": "Lloyd.Rowe",
+    "email": "Lloyd.Rowe38@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$gJzaSraWVeAKJgqLOVsJ9Q$3zFHYxyphztIVihA6G3l0dC+9NlPuwZXAs+i5liZPOQ",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Lloyd",
+        "middleName": "Bowie",
+        "lastName": "Rowe",
+        "dateOfBirth": "1960-01-03T07:11:53.657Z"
+      }
+    }
+  },
+  {
+    "username": "Francisca.Schimmel37",
+    "email": "Francisca.Schimmel93@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$uEcu+Ux1HnzUi7SvrN8nXg$8P3DsPfWiKBFYNXOWIPZ7j7DkkKHLj5LqX0be2mwsXQ",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Francisca",
+        "middleName": "Kennedy",
+        "lastName": "Schimmel",
+        "dateOfBirth": "2003-12-23T12:02:13.174Z"
+      }
+    }
+  },
+  {
+    "username": "Lamar_Dickens48",
+    "email": "Lamar.Dickens@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$XX12sTSc3PG59soQ654YVQ$3+SrJjv3ASP6p/WwB3zCqGPQtTBvl+/q6ss97z8LeGE",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Lamar",
+        "middleName": "James",
+        "lastName": "Dickens",
+        "dateOfBirth": "1984-10-25T05:18:22.790Z"
+      }
+    }
+  },
+  {
+    "username": "Michel.Lind",
+    "email": "Michel.Lind79@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$GRvbqs6g0FKYA2I76q0i0w$hNVVWowd/98ZG3x4cCz58FSvKE59KDgN6oLIVJDfe4Q",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Michel",
+        "middleName": "Sawyer",
+        "lastName": "Lind",
+        "dateOfBirth": "1972-06-29T01:06:10.970Z"
+      }
+    }
+  },
+  {
+    "username": "Mohammed_Jacobs37",
+    "email": "Mohammed.Jacobs68@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$q5wgV63Cju6ikPz1hYXttw$u81ip6mSAs0TRjvE86qacDomcW93oNmo9dIZq0nxS+M",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Mohammed",
+        "middleName": "Arden",
+        "lastName": "Jacobs",
+        "dateOfBirth": "1960-05-13T11:41:37.507Z"
+      }
+    }
+  },
+  {
+    "username": "Hilma_Johns",
+    "email": "Hilma_Johns@gmail.com",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$Y9gKpzOqBwR7Ywl89VxPgw$Pkys1IY9LaxBTnsE9KDkrhBrMqbFFAJT0bzeSRs8wfQ",
+    "role": "User",
+    "details": {
+      "create": {
+        "firstName": "Hilma",
+        "middleName": "Avery",
+        "lastName": "Johns",
+        "dateOfBirth": "1982-03-01T11:15:13.344Z"
+      }
+    }
+  }
+]
