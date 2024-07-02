@@ -83,7 +83,7 @@ export class CreateUserDto {
   @Matches(/^[a-z]/, {
     message: 'Username must begin with a letter',
   })
-  @Matches(/^[a-z][a-z0-9\-]+$/, {
+  @Matches(/^[a-z][a-z0-9\-\.]+$/, {
     message: 'Invalid Username',
   })
   @ApiProperty({
@@ -91,7 +91,7 @@ export class CreateUserDto {
     minLength: 1,
     maxLength: 20,
     required: true,
-    example: 'john-doe',
+    example: 'john.doe',
   })
   username!: string;
 

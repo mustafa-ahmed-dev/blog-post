@@ -11,6 +11,7 @@ enum Role {
   User       @map("user")
   Admin      @map("admin")
   SuperAdmin @map("super_admin")
+  Moderator  @map("moderator")
 
   @@map("role")
 }

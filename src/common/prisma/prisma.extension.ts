@@ -1,5 +1,6 @@
 import { Prisma, PrismaClient } from '@prisma/client';
 import pagination from 'prisma-extension-pagination';
+import { LoginType } from './types/login.type';
 
 export const extendedPrismaClient = new PrismaClient({
   log: ['info', 'query', 'error', 'warn'],
@@ -26,7 +27,38 @@ export const extendedPrismaClient = new PrismaClient({
           });
         },
 
-        findByIdentifier: async (identifier: string | number) => {
+        findForLogin: (username: string): Promise<LoginType> => {
+          const select: Prisma.UserSelect = {
+            id: true,
+            username: true,
+            email: true,
+            role: true,
+            password: true,
+          };
+
+          // to check if it is an email
+          if (username.includes('@')) {
+            return extendedPrismaClient.user.findUniqueOrThrow({
+              where: {
+                email: username,
+              },
+              include: {
+                details: true,
+              },
+              select,
+            });
+          }
+
+          return extendedPrismaClient.user.findUniqueOrThrow({
+            where: { username },
+            select,
+          });
+        },
+
+        findByIdentifier: async (
+          identifier: string | number,
+          select?: Prisma.UserSelect | null,
+        ) => {
           if (typeof identifier === 'number') {
             return extendedPrismaClient.user.findUniqueOrThrow({
               where: {

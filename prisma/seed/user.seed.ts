@@ -27,16 +27,20 @@ const generateUser = async (role: Role = Role.User) => {
   const lastName: string = faker.person.lastName();
   const dateOfBirth: Date = faker.date.birthdate();
 
-  const username: string = faker.internet.userName({
-    firstName,
-    lastName,
-  });
+  const username: string = faker.internet
+    .userName({
+      firstName,
+      lastName,
+    })
+    .toLowerCase();
 
-  const email: string = faker.internet.email({
-    firstName,
-    lastName,
-    provider: 'gmail.com',
-  });
+  const email: string = faker.internet
+    .email({
+      firstName,
+      lastName,
+      provider: 'gmail.com',
+    })
+    .toLowerCase();
 
   const hashedPassword: string = await hash(PASSWORD);
 
