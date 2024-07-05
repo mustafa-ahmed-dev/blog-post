@@ -10,6 +10,8 @@ import { RegisterDto } from './dto/register.dto';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtAuthGuard } from '@/common/guards/jwt.guard';
 
+import { JwtPayload } from './types/jwt-payload';
+
 @Controller('auth')
 @ApiTags('auth')
 export class AuthController {
@@ -18,7 +20,7 @@ export class AuthController {
   @Post('login')
   @UseGuards(LocalAuthGuard)
   login(@Req() request: Request, @Body() dto: LoginDto) {
-    const user = request?.user;
+    const user = request?.user as JwtPayload;
 
     return user;
   }
@@ -26,7 +28,9 @@ export class AuthController {
   @Get('status')
   @UseGuards(JwtAuthGuard)
   status(@Req() request: Request) {
-    const user = request?.user;
+    const user = request?.user as JwtPayload;
+
+    return user;
   }
 
   @Post('register')

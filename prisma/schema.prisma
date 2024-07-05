@@ -64,7 +64,7 @@ model UserDetail {
   imageId String? @unique @map("image_id") @db.Uuid
 
   // User 1:1 UserDetail
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // NOTE: this is a test, remove the optional in production
   // UserDetail 1:1 Attachment

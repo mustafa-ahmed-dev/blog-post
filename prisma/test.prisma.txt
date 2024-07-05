@@ -1,0 +1,260 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Action {
+  All    @map("all")
+  Create @map("create")
+  Read   @map("read")
+  Update @map("update")
+  Delete @map("delete")
+
+  // this is for granting permissions for the specific Doctype
+  Upgrade @map("upgrade")
+
+  @@map("action")
+}
+
+enum Doctype {
+  User            @map("user")
+  Post            @map("post")
+  InteractionType @map("interaction_type")
+  PostInteraction @map("post_interaction")
+  Attachment      @map("attachment")
+  Permission      @map("permission")
+  Role            @map("role")
+
+  @@map("doctype")
+}
+
+enum UserRole {
+  User           @map("user")
+  Admin          @map("admin")
+  Owner          @map("Owner")
+  Moderator      @map("moderator")
+  VerifiedUser   @map("verified_user")
+  ContentCreator @map("content_creator")
+  Advertiser     @map("advertiser")
+  Developer      @map("developer")
+
+  @@map("user_role")
+}
+
+enum PostType {
+  Regular @map("regular")
+  Group   @map("group")
+  Page    @map("page")
+
+  @@map("post_type")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  username String @unique @db.VarChar(35)
+
+  email String @unique @db.VarChar(100)
+
+  // 97 characters for the argon2 hash
+  password String @db.Char(97)
+
+  isActive Boolean @default(true) @map("is_active")
+
+  isBlocked   Boolean @default(false) @map("is_blocked")
+  blockReason String? @map("block_reason") @db.VarChar(255)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
+
+  createdByUserId Int? @map("created_by_user_id")
+
+  // User 1:1 User
+  createdUsers User[] @relation("created_users")
+
+  // User 1:1 User
+  // Created At
+  createdBy User? @relation("created_users", fields: [createdByUserId], references: [id])
+
+  // User 1:1 UserDetail
+  details UserDetail?
+
+  // User 1:M Post
+  posts Post[]
+
+  // User 1:M Role
+  roles Role[] @relation("user_roles")
+
+  // User 1:M Permission
+  permissions Permission[] @relation("user_permissions")
+
+  // User 1:1 Permission
+  permissionCreatedBy Permission? @relation("user_permission_created_by")
+
+  // User 1:1 Role
+  Role Role? @relation("user_role_created_by")
+
+  @@index([isActive])
+  @@map("users")
+}
+
+model UserFollow {
+  userId         Int @map("user_id")
+  followedUserId Int @map("followed_user_id")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+
+  @@id([userId, followedUserId])
+  @@map("user_follows")
+}
+
+model Friendship {
+  userId       Int @map("user_id")
+  friendUserId Int @map("friend_user_id")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+
+  @@id([userId, friendUserId])
+  @@map("friendships")
+}
+
+model Permission {
+  userId  Int     @map("user_id")
+  docytpe Doctype
+  action  Action
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+
+  createdByUserId Int @unique @map("created_by_user_id")
+
+  // User 1:1 Permission
+  createdBy User @relation("user_permission_created_by", fields: [createdByUserId], references: [id])
+
+  // User 1:M Permission
+  user User @relation("user_permissions", fields: [userId], references: [id])
+
+  @@id([userId, docytpe, action])
+  @@map("permissions")
+}
+
+model Role {
+  userId Int
+  role   UserRole
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+
+  createdByUserId Int @unique @map("created_by_user_id")
+
+  // User 1:1 Role
+  createdBy User @relation("user_role_created_by", fields: [createdByUserId], references: [id])
+
+  // User 1:M Role
+  user User @relation("user_roles", fields: [userId], references: [id])
+
+  @@id([userId, role])
+  @@map("roles")
+}
+
+model UserDetail {
+  userId Int @id
+
+  firstName  String @map("first_name") @db.VarChar(20)
+  middleName String @map("middle_name") @db.VarChar(20)
+  lastName   String @map("last_name") @db.VarChar(20)
+
+  dateOfBirth DateTime @map("date_of_birth") @db.Date
+
+  // NOTE: this is a test, remove the optional in production
+  imageId String? @unique @map("image_id") @db.Uuid
+
+  // User 1:1 UserDetail
+  user User @relation(fields: [userId], references: [id])
+
+  // NOTE: this is a test, remove the optional in production
+  // UserDetail 1:1 Attachment
+  image Attachment? @relation(fields: [imageId], references: [id])
+
+  @@index([firstName])
+  @@index([middleName])
+  @@index([lastName])
+  @@index([dateOfBirth])
+  @@map("user_details")
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+
+  title String @db.VarChar(100)
+
+  description String @db.VarChar()
+  text        String @db.Text
+
+  type PostType
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
+
+  authorId Int @map("author_id")
+
+  // User 1:M Post
+  author User @relation(fields: [authorId], references: [id])
+
+  // InteractionType M:M Post
+  interactions PostInteraction[]
+
+  @@index([authorId])
+  @@index([createdAt])
+  @@index([title])
+  @@map("posts")
+}
+
+model InteractionType {
+  id Int @id @default(autoincrement())
+
+  name        String @db.VarChar(25)
+  interaction String @db.VarChar(50)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
+
+  // InteractionType M:M Post
+  posts PostInteraction[]
+
+  @@map("interaction_types")
+}
+
+model PostInteraction {
+  interactionTypeId Int @map("interaction_type_id")
+  postId            Int @map("post_id")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
+
+  // InteractionType M:M Post
+  interactionType InteractionType @relation(fields: [interactionTypeId], references: [id])
+
+  // InteractionType M:M Post
+  post Post @relation(fields: [postId], references: [id])
+
+  @@id([interactionTypeId, postId])
+  @@map("post_interactions")
+}
+
+model Attachment {
+  id String @id @default(uuid()) @db.Uuid
+
+  mimetype String @db.VarChar(10)
+  size     BigInt
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
+
+  // UserDetail 1:1 Attachment
+  userDetail UserDetail?
+
+  @@map("attachments")
+}

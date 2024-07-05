@@ -1,7 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { Role } from '@prisma/client';
 
 import { AppService } from './app.service';
+
+import { JwtAuthGuard } from './common/guards/jwt.guard';
 
 @Controller()
 export class AppController {
@@ -12,6 +14,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('roles')
   getRoles() {
     const roles = Object.values(Role);
