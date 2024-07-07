@@ -44,7 +44,7 @@ export class UserService {
   }
 
   findOne(id: number, select?: Prisma.UserSelect | null) {
-    return this.prismaService.client.user.findUnique({
+    return this.prismaService.client.user.findUniqueOrThrow({
       where: { id },
       select,
     });

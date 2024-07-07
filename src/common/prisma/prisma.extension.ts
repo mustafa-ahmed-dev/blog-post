@@ -42,9 +42,6 @@ export const extendedPrismaClient = new PrismaClient({
               where: {
                 email: username,
               },
-              include: {
-                details: true,
-              },
               select,
             });
           }

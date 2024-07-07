@@ -1,4 +1,3 @@
-import { Role } from '@prisma/client';
 import {
   Controller,
   Get,
@@ -30,24 +29,32 @@ import { getUserProfileSelect, getUserSelect } from '@/common/constants';
 import { JwtAuthGuard } from '@/common/guards/jwt.guard';
 import { RolesGuard } from '@/common/guards/roles.guard';
 import { OwnershipGuard } from '@/common/guards/ownership.guard';
+import { UserValidationGuard } from './guards/user-validation.guard';
+
+import { Roles } from '@/common/decorators/roles.decorator';
 
 import { RoleOrOwnershipGuardFactory } from '@/common/factories/role-or-ownership-guard.factory';
 
-import { Roles } from '@/common/decorators/roles.decorator';
+import {
+  admins,
+  managerialRoles,
+} from '@/common/constants/user-roles.constant';
 
 @Controller('users')
 @ApiTags('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard, UserValidationGuard)
+  @Roles(managerialRoles)
   @UseInterceptors(UserSerializer)
   @Post()
   create(@Body() dto: CreateUserDto) {
     return this.userService.create(dto);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(managerialRoles)
   @UseInterceptors(UserSerializer)
   @Get()
   findAll() {
@@ -85,8 +92,8 @@ export class UserController {
     return this.userService.updateEmail(id, dto.email);
   }
 
-  @UseGuards(JwtAuthGuard)
-  // @UpdateRole()
+  @UseGuards(JwtAuthGuard, RolesGuard, UserValidationGuard)
+  @Roles(managerialRoles)
   @UseInterceptors(UserSerializer)
   @Patch(':id/role')
   updateRole(
@@ -96,7 +103,7 @@ export class UserController {
     return this.userService.updateRole(id, dto.role);
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RoleOrOwnershipGuardFactory(admins))
   @UseInterceptors(UserSerializer)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
