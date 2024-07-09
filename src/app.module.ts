@@ -15,6 +15,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 
 import { AppConfigModule } from './common/config/config.module';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AppConfigModule } from './common/config/config.module';
     UserModule,
     AuthModule,
     AppConfigModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [providePrismaClientExceptionFilter(), AppService, HashService],

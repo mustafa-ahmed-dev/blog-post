@@ -1,18 +1,17 @@
 import { Role } from '@prisma/client';
-import { Transform } from 'class-transformer';
 import {
   IsString,
-  IsDate,
-  IsEmail,
   IsNotEmpty,
   Length,
-  MaxDate,
   IsStrongPassword,
   IsOptional,
   IsEnum,
-  Matches,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+
+import { IsUsername } from '../decorators/is-username.decorator';
+import { IsEmail } from '../decorators/is-email.decorator';
+import { IsDateOfBirth } from '../decorators/is-date-of-birth.decorator';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -52,9 +51,7 @@ export class CreateUserDto {
   lastName!: string;
 
   @IsNotEmpty()
-  @Transform(({ value }) => new Date(value))
-  @IsDate()
-  @MaxDate(new Date(Date.now()))
+  @IsDateOfBirth()
   @ApiProperty({
     type: Date,
     required: true,
@@ -63,9 +60,6 @@ export class CreateUserDto {
   dateOfBirth!: Date;
 
   @IsNotEmpty()
-  @IsString()
-  @Length(1, 100)
-  @Transform(({ value }: { value: string }) => value.toLowerCase())
   @IsEmail()
   @ApiProperty({
     type: String,
@@ -77,22 +71,7 @@ export class CreateUserDto {
   email!: string;
 
   @IsNotEmpty()
-  @IsString()
-  @Length(1, 35)
-  @Transform(({ value }: { value: string }) => value.toLowerCase())
-  @Matches(/^[a-z]/, {
-    message: 'Username must begin with a letter',
-  })
-  @Matches(/^[a-z][a-z0-9\-\.]+$/, {
-    message: 'Invalid Username',
-  })
-  @ApiProperty({
-    type: String,
-    minLength: 1,
-    maxLength: 20,
-    required: true,
-    example: 'john.doe',
-  })
+  @IsUsername()
   username!: string;
 
   @IsNotEmpty()

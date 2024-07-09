@@ -82,7 +82,7 @@ model Blog {
 
   title String @db.VarChar(100)
 
-  description String @db.VarChar()
+  description String @db.VarChar(255)
   text        String @db.Text
 
   type BlogType

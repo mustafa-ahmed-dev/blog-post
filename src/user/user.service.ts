@@ -6,10 +6,13 @@ import { ExtendedPrismaClient } from '@/common/prisma/prisma.extension';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserFiltersDto } from './dto/filter-user.dto';
 
 import { mapCreateUserData } from './mappers/create-user-data.mapper';
 import { mapUpdateUserData } from './mappers/update-user-data.mapper';
-import { getUserProfileSelect } from '@/common/constants';
+
+import { getUserProfileSelect } from './helpers/get-user-profile-select.helper';
+import { getFindAllArgsFromDto } from './helpers/get-find-all-args-from-dto.helper';
 
 @Injectable()
 export class UserService {
@@ -29,18 +32,18 @@ export class UserService {
     });
   }
 
-  findAll(page: number = 1, limit: number = 10) {
-    return this.prismaService.client.user
-      .paginate({
-        include: {
-          details: true,
-        },
-      })
-      .withPages({
-        page,
-        limit,
-        includePageCount: true,
-      });
+  findAll(dto: UserFiltersDto) {
+    const { page, limit, ...data } = dto;
+
+    const args = getFindAllArgsFromDto(data);
+
+    const pagination = {
+      page,
+      limit,
+      includePageCount: true,
+    };
+
+    return this.prismaService.client.user.paginate(args).withPages(pagination);
   }
 
   findOne(id: number, select?: Prisma.UserSelect | null) {

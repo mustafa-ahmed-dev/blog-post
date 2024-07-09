@@ -11,8 +11,9 @@ import {
   HttpStatus,
   HttpCode,
   UseGuards,
+  Query,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { UserService } from './user.service';
 
@@ -23,8 +24,10 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserEmailDto } from './dto/update-user-email.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
+import { UserFiltersDto } from './dto/filter-user.dto';
 
-import { getUserProfileSelect, getUserSelect } from '@/common/constants';
+import { getUserProfileSelect } from './helpers/get-user-profile-select.helper';
+import { getUserSelect } from './helpers/get-user-select.helper';
 
 import { JwtAuthGuard } from '@/common/guards/jwt.guard';
 import { RolesGuard } from '@/common/guards/roles.guard';
@@ -56,9 +59,12 @@ export class UserController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(managerialRoles)
   @UseInterceptors(UserSerializer)
+  @ApiQuery({
+    type: UserFiltersDto,
+  })
   @Get()
-  findAll() {
-    return this.userService.findAll();
+  findAll(@Query() dto: UserFiltersDto) {
+    return this.userService.findAll(dto);
   }
 
   @UseGuards(JwtAuthGuard)
