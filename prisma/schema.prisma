@@ -39,12 +39,15 @@ model User {
   // User 1:M Blog
   blogs Blog[]
 
+  // User 1:M BlogInteraction
+  interactions BlogInteraction[]
+
   @@index([isActive])
   @@map("users")
 }
 
 model UserDetail {
-  userId Int @id
+  userId Int @id // @map("user_id")
 
   firstName  String @map("first_name") @db.VarChar(20)
   middleName String @map("middle_name") @db.VarChar(20)
@@ -110,8 +113,11 @@ model InteractionType {
 }
 
 model BlogInteraction {
+  id String @id @default(uuid()) @db.Uuid
+
   interactionTypeId Int @map("interaction_type_id")
   blogId            Int @map("blog_id")
+  userId            Int @map("user_id")
 
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
@@ -122,14 +128,17 @@ model BlogInteraction {
   // InteractionType M:M Blog
   blog Blog @relation(fields: [blogId], references: [id])
 
-  @@id([interactionTypeId, blogId])
+  // User 1:M Blog
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([interactionTypeId, blogId, userId])
   @@map("blog_interactions")
 }
 
 model Attachment {
   id String @id @default(uuid()) @db.Uuid
 
-  mimetype String @db.VarChar(10)
+  mimetype String @db.VarChar(12)
   size     BigInt
 
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()

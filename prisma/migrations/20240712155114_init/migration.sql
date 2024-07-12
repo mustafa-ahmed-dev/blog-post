@@ -1,8 +1,5 @@
 -- CreateEnum
-CREATE TYPE "role" AS ENUM ('user', 'admin', 'super_admin');
-
--- CreateEnum
-CREATE TYPE "blog_type" AS ENUM ('regular', 'group', 'page');
+CREATE TYPE "role" AS ENUM ('user', 'admin', 'super_admin', 'moderator');
 
 -- CreateTable
 CREATE TABLE "users" (
@@ -34,9 +31,8 @@ CREATE TABLE "user_details" (
 CREATE TABLE "blogs" (
     "id" SERIAL NOT NULL,
     "title" VARCHAR(100) NOT NULL,
-    "description" VARCHAR NOT NULL,
+    "description" VARCHAR(255) NOT NULL,
     "text" TEXT NOT NULL,
-    "type" "blog_type" NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP NOT NULL,
     "author_id" INTEGER NOT NULL,
@@ -57,18 +53,20 @@ CREATE TABLE "interaction_types" (
 
 -- CreateTable
 CREATE TABLE "blog_interactions" (
+    "id" UUID NOT NULL,
     "interaction_type_id" INTEGER NOT NULL,
     "blog_id" INTEGER NOT NULL,
+    "user_id" INTEGER NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP NOT NULL,
 
-    CONSTRAINT "blog_interactions_pkey" PRIMARY KEY ("interaction_type_id","blog_id")
+    CONSTRAINT "blog_interactions_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "attachments" (
     "id" UUID NOT NULL,
-    "mimetype" VARCHAR(10) NOT NULL,
+    "mimetype" VARCHAR(12) NOT NULL,
     "size" BIGINT NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP NOT NULL,
@@ -109,8 +107,11 @@ CREATE INDEX "blogs_created_at_idx" ON "blogs"("created_at");
 -- CreateIndex
 CREATE INDEX "blogs_title_idx" ON "blogs"("title");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "blog_interactions_interaction_type_id_blog_id_user_id_key" ON "blog_interactions"("interaction_type_id", "blog_id", "user_id");
+
 -- AddForeignKey
-ALTER TABLE "user_details" ADD CONSTRAINT "user_details_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "user_details" ADD CONSTRAINT "user_details_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "user_details" ADD CONSTRAINT "user_details_image_id_fkey" FOREIGN KEY ("image_id") REFERENCES "attachments"("id") ON DELETE SET NULL ON UPDATE CASCADE;
@@ -123,3 +124,6 @@ ALTER TABLE "blog_interactions" ADD CONSTRAINT "blog_interactions_interaction_ty
 
 -- AddForeignKey
 ALTER TABLE "blog_interactions" ADD CONSTRAINT "blog_interactions_blog_id_fkey" FOREIGN KEY ("blog_id") REFERENCES "blogs"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "blog_interactions" ADD CONSTRAINT "blog_interactions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -1,14 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Transform } from 'class-transformer';
-import {
-  IsInt,
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  Length,
-  Min,
-  MinLength,
-} from 'class-validator';
+import { IsNotEmpty, IsString, Length, MinLength } from 'class-validator';
+
+import { IsID } from '@/common/decorators/is-id.decorator';
 
 export class CreateBlogDto {
   @IsNotEmpty()
@@ -44,12 +37,7 @@ export class CreateBlogDto {
   text!: string;
 
   @IsNotEmpty()
-  @Transform(({ value }: { value: string }) => parseInt(value, 10), {
-    toClassOnly: true,
-  })
-  @IsNumber()
-  @IsInt()
-  @Min(1)
+  @IsID()
   @ApiProperty({
     type: Number,
     minimum: 1,

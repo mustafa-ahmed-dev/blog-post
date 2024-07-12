@@ -16,6 +16,8 @@ import { AuthModule } from './auth/auth.module';
 
 import { AppConfigModule } from './common/config/config.module';
 import { BlogModule } from './blog/blog.module';
+import { InteractionModule } from './interaction/interaction.module';
+import { InteractionTypeModule } from './interaction-type/interaction-type.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { BlogModule } from './blog/blog.module';
     AuthModule,
     AppConfigModule,
     BlogModule,
+    InteractionModule,
+    InteractionTypeModule,
   ],
   controllers: [AppController],
   providers: [providePrismaClientExceptionFilter(), AppService, HashService],
