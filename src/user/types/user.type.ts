@@ -1,4 +1,4 @@
-import { BlogType, Role } from '@prisma/client';
+import { Role } from '@prisma/client';
 import {
   PageNumberCounters,
   PageNumberPagination,
@@ -28,7 +28,6 @@ export type FindSingleUserWithProfile = {
   blogs: {
     id: number;
     title: string;
-    type: BlogType;
     description: string;
     text: string;
     createdAt: Date;

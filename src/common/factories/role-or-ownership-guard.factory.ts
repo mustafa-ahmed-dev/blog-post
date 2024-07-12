@@ -6,7 +6,7 @@ import { Reflector } from '@nestjs/core';
 import { OwnershipGuard } from '../guards/ownership.guard';
 import { RolesGuard } from '../guards/roles.guard';
 
-import { JwtPayload } from '@/auth/types/jwt-payload';
+import { JwtPayload } from '@/auth/classes/jwt-payload';
 
 export function RoleOrOwnershipGuardFactory(
   allowedRoles: Role[] = [],

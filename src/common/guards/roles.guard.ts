@@ -4,7 +4,7 @@ import { Reflector } from '@nestjs/core';
 import { Role } from '@prisma/client';
 import { Request } from 'express';
 
-import { JwtPayload } from '@/auth/types/jwt-payload';
+import { JwtPayload } from '@/auth/classes/jwt-payload';
 
 import { ROLES_KEY } from '../decorators/roles.decorator';
 

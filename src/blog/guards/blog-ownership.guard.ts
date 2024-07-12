@@ -10,18 +10,18 @@ import { Request } from 'express';
 import { JwtPayload } from '@/auth/classes/jwt-payload';
 
 @Injectable()
-export class OwnershipGuard implements CanActivate {
+export class BlogOwnershipGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest() as Request;
 
-    const userIdFromParam: string | null | undefined = request.params?.id;
+    const _authorId: string | null | undefined = request.body?.authorId;
 
-    if (!userIdFromParam) return true;
+    if (!_authorId) return true;
 
-    const id: number = parseInt(userIdFromParam, 10);
+    const authorId = parseInt(_authorId, 10);
     const user = request.user as JwtPayload;
 
-    if (user.id !== id)
+    if (user.id !== authorId)
       throw new ForbiddenException(
         "You don't have the permissions to access the resource",
       );

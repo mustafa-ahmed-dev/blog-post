@@ -1,4 +1,3 @@
-import { BlogType } from '@prisma/client';
 import { Expose } from 'class-transformer';
 
 export class BlogEntity {
@@ -13,9 +12,6 @@ export class BlogEntity {
 
   @Expose()
   text: string;
-
-  @Expose()
-  type: BlogType;
 
   @Expose()
   createdAt: Date;

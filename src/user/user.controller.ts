@@ -81,6 +81,12 @@ export class UserController {
     return this.userService.findOne(id, getUserProfileSelect());
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/posts')
+  getPosts(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.getUserBlogs(id);
+  }
+
   @UseGuards(JwtAuthGuard, OwnershipGuard)
   @UseInterceptors(UserSerializer)
   @Patch(':id')

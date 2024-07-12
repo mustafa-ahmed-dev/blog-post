@@ -53,6 +53,14 @@ export class UserService {
     });
   }
 
+  getUserBlogs(id: number) {
+    return this.prismaService.client.blog.findMany({
+      where: {
+        authorId: id,
+      },
+    });
+  }
+
   update(id: number, dto: UpdateUserDto) {
     const data = mapUpdateUserData(dto);
 

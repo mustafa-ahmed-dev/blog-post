@@ -16,14 +16,6 @@ enum Role {
   @@map("role")
 }
 
-enum BlogType {
-  Regular @map("regular")
-  Group   @map("group")
-  Page    @map("page")
-
-  @@map("blog_type")
-}
-
 model User {
   id Int @id @default(autoincrement())
 
@@ -84,8 +76,6 @@ model Blog {
 
   description String @db.VarChar(255)
   text        String @db.Text
-
-  type BlogType
 
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()

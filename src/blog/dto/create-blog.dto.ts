@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { BlogType } from '@prisma/client';
 import { Transform } from 'class-transformer';
 import {
-  IsEnum,
   IsInt,
   IsNotEmpty,
   IsNumber,
@@ -44,16 +42,6 @@ export class CreateBlogDto {
     required: true,
   })
   text!: string;
-
-  @IsNotEmpty()
-  @IsEnum(BlogType)
-  @ApiProperty({
-    enum: BlogType,
-    enumName: 'blogType',
-    example: BlogType.Regular,
-    required: true,
-  })
-  type!: BlogType;
 
   @IsNotEmpty()
   @Transform(({ value }: { value: string }) => parseInt(value, 10), {

@@ -9,7 +9,7 @@ import { Role } from '@prisma/client';
 import { CreateUserDto } from '@/user/dto/create-user.dto';
 import { Request } from 'express';
 
-import { JwtPayload } from '@/auth/types/jwt-payload';
+import { JwtPayload } from '@/auth/classes/jwt-payload';
 
 @Injectable()
 export class UserValidationGuard implements CanActivate {

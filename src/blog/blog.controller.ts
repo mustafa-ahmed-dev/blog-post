@@ -10,26 +10,29 @@ import {
   HttpStatus,
   HttpCode,
   ParseIntPipe,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import { BlogService } from './blog.service';
 
-import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
+import { CreateBlogWithoutAuthorDto } from './dto/create-blog-without-author.dto';
 
-import { OwnershipGuard } from '@/common/guards/ownership.guard';
+import { BlogOwnershipGuard } from './guards/blog-ownership.guard';
 import { JwtAuthGuard } from '@/common/guards/jwt.guard';
 
-@ApiTags('blog')
-@Controller('blog')
+import { UserId } from '@/common/decorators/user-id.decorator';
+
+@Controller('blogs')
+@ApiTags('blogs')
 export class BlogController {
   constructor(private readonly blogService: BlogService) {}
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() dto: CreateBlogDto) {
-    return this.blogService.create(dto);
+  create(@Body() dto: CreateBlogWithoutAuthorDto, @UserId() authorId: number) {
+    return this.blogService.create(dto, authorId);
   }
 
   @Get()
@@ -42,13 +45,13 @@ export class BlogController {
     return this.blogService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard, OwnershipGuard)
+  @UseGuards(JwtAuthGuard, BlogOwnershipGuard)
   @Patch(':id')
   update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateBlogDto) {
     return this.blogService.update(id, dto);
   }
 
-  @UseGuards(JwtAuthGuard, OwnershipGuard)
+  @UseGuards(JwtAuthGuard, BlogOwnershipGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', ParseIntPipe) id: number) {
