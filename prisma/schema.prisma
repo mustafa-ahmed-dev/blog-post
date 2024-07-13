@@ -100,8 +100,8 @@ model Blog {
 model InteractionType {
   id Int @id @default(autoincrement())
 
-  name        String @db.VarChar(25)
-  interaction String @db.VarChar(50)
+  name        String @unique() @db.VarChar(25)
+  interaction String @unique() @db.VarChar(50)
 
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp()
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()

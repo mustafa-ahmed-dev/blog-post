@@ -9,6 +9,7 @@ import {
   ParseIntPipe,
   UseGuards,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { InteractionTypeService } from './interaction-type.service';
 
@@ -22,6 +23,7 @@ import { Roles } from '@/common/decorators/roles.decorator';
 
 import { managerialRoles } from '@/common/constants/user-roles.constant';
 
+@ApiTags('interaction-types')
 @Controller('interaction-types')
 export class InteractionTypeController {
   constructor(

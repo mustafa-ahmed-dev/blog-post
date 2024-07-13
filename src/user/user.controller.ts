@@ -42,6 +42,7 @@ import {
   admins,
   managerialRoles,
 } from '@/common/constants/user-roles.constant';
+import { PaginationDto } from '@/common/dto/pagination.dto';
 
 @Controller('users')
 @ApiTags('users')
@@ -82,9 +83,12 @@ export class UserController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get(':id/posts')
-  getPosts(@Param('id', ParseIntPipe) id: number) {
-    return this.userService.getUserBlogs(id);
+  @Get(':id/blogs')
+  getBlogs(
+    @Param('id', ParseIntPipe) id: number,
+    @Query() dto: Omit<PaginationDto, 'includePageCount'>,
+  ) {
+    return this.userService.getUserBlogs(id, dto);
   }
 
   @UseGuards(JwtAuthGuard, OwnershipGuard)

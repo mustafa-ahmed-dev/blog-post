@@ -8,18 +8,23 @@ import {
   Delete,
   UseGuards,
   ParseUUIDPipe,
+  Query,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { InteractionService } from './interaction.service';
 
 import { CreateInteractionDto } from './dto/create-interaction.dto';
 import { UpdateInteractionDto } from './dto/update-interaction.dto';
+import { FilterInteractionDtoWithPagination } from './dto/filter-interaction.dto';
 
 import { JwtAuthGuard } from '@/common/guards/jwt.guard';
-import { UserId } from '@/common/decorators/user-id.decorator';
 import { InteractionOwnershipGuard } from './guards/interaction-ownership.guard';
 
-@Controller('interaction')
+import { UserId } from '@/common/decorators/user-id.decorator';
+
+@ApiTags('interactions')
+@Controller('interactions')
 export class InteractionController {
   constructor(private readonly interactionService: InteractionService) {}
 
@@ -31,8 +36,8 @@ export class InteractionController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  findAll() {
-    return this.interactionService.findAll();
+  findAll(@Query() dto: FilterInteractionDtoWithPagination) {
+    return this.interactionService.findAndCount(dto);
   }
 
   @UseGuards(JwtAuthGuard)

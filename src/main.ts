@@ -11,6 +11,12 @@ import { DataInterceptor } from '@/common/interceptors/data.interceptor';
 import { AppConfigService } from '@/common/config/config.service';
 
 async function bootstrap() {
+  // this is for serializing bigint to JSON without getting the error `Do not know how to serialize a BigInt` from prisma
+  BigInt.prototype['toJSON'] = function () {
+    const int = Number.parseInt(this.toString());
+    return int ?? this.toString();
+  };
+
   const app = await NestFactory.create(AppModule, {
     cors: true,
   });

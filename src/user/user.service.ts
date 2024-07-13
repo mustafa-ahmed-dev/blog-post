@@ -13,6 +13,7 @@ import { mapUpdateUserData } from './mappers/update-user-data.mapper';
 
 import { getUserProfileSelect } from './helpers/get-user-profile-select.helper';
 import { getFindAllArgsFromDto } from './helpers/get-find-all-args-from-dto.helper';
+import { PaginationDto } from '@/common/dto/pagination.dto';
 
 @Injectable()
 export class UserService {
@@ -53,12 +54,22 @@ export class UserService {
     });
   }
 
-  getUserBlogs(id: number) {
-    return this.prismaService.client.blog.findMany({
-      where: {
-        authorId: id,
-      },
-    });
+  getUserBlogs(id: number, dto: Omit<PaginationDto, 'includePageCount'>) {
+    const { page, limit } = dto;
+
+    const pagination = {
+      page,
+      limit,
+      includePageCount: true,
+    };
+
+    return this.prismaService.client.blog
+      .paginate({
+        where: {
+          authorId: id,
+        },
+      })
+      .withPages(pagination);
   }
 
   update(id: number, dto: UpdateUserDto) {

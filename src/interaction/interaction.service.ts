@@ -1,10 +1,17 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CustomPrismaService } from 'nestjs-prisma';
+import { Prisma } from '@prisma/client';
 
 import { ExtendedPrismaClient } from '@/common/prisma/prisma.extension';
 
 import { CreateInteractionDto } from './dto/create-interaction.dto';
 import { UpdateInteractionDto } from './dto/update-interaction.dto';
+import {
+  FilterInteractionDto,
+  FilterInteractionDtoWithPagination,
+} from './dto/filter-interaction.dto';
+
+import { InteractionsGroupedByType } from './types/interactions-grouped-by-type';
 
 @Injectable()
 export class InteractionService {
@@ -12,6 +19,10 @@ export class InteractionService {
     @Inject('PrismaService')
     private readonly prismaService: CustomPrismaService<ExtendedPrismaClient>,
   ) {}
+
+  count(where?: FilterInteractionDto) {
+    return this.prismaService.client.blogInteraction.count({ where });
+  }
 
   create(dto: CreateInteractionDto, userId: number) {
     return this.prismaService.client.blogInteraction.create({
@@ -22,16 +33,52 @@ export class InteractionService {
     });
   }
 
-  findAll() {
+  findAll(filters?: FilterInteractionDtoWithPagination) {
+    const { page, limit, ...where } = filters;
+
     const pagination = {
-      page: 1,
-      limit: 10,
+      page,
+      limit,
       includePageCount: true,
     };
 
     return this.prismaService.client.blogInteraction
-      .paginate()
+      .paginate({ where })
       .withPages(pagination);
+  }
+
+  groupInteractionsByType(
+    blogId: number,
+  ): Promise<InteractionsGroupedByType[]> {
+    return this.prismaService.client.$queryRaw`
+      SELECT
+        interactions.interaction_type_id AS id,
+        interaction_types.name,
+        interaction_types.interaction,
+        COUNT(interaction_types.interaction) 
+      FROM blog_interactions AS interactions
+      JOIN interaction_types
+        ON interaction_types.id = interactions.interaction_type_id
+      WHERE blog_id = ${blogId}
+      GROUP BY interactions.interaction_type_id, interaction_types.name, interaction_types.interaction
+    `;
+  }
+
+  async findAndCount(dto: FilterInteractionDtoWithPagination) {
+    const [[users, pagination], count] = await Promise.all([
+      this.findAll(dto),
+      this.count(dto),
+    ]);
+
+    const data = [
+      users,
+      {
+        ...pagination,
+        count,
+      },
+    ] as const;
+
+    return data;
   }
 
   findOne(id: string) {

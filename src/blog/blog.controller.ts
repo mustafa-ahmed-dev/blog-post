@@ -45,6 +45,9 @@ export class BlogController {
     return this.blogService.findOne(id);
   }
 
+  @Get(':id/interactions')
+  getNumberInteractions(@Param('id', ParseIntPipe) id: number) {}
+
   @UseGuards(JwtAuthGuard, BlogOwnershipGuard)
   @Patch(':id')
   update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateBlogDto) {
