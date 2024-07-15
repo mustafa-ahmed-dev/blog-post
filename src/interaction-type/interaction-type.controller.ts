@@ -38,11 +38,13 @@ export class InteractionTypeController {
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   findAll() {
     return this.interactionTypeService.findAll();
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthGuard)
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.interactionTypeService.findOne(id);
   }

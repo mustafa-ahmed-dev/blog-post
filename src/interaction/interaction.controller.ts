@@ -9,6 +9,7 @@ import {
   UseGuards,
   ParseUUIDPipe,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -23,12 +24,15 @@ import { InteractionOwnershipGuard } from './guards/interaction-ownership.guard'
 
 import { UserId } from '@/common/decorators/user-id.decorator';
 
+import { InteractionErrorsInterceptor } from './interceptors/interaction-errors.interceptor';
+
 @ApiTags('interactions')
 @Controller('interactions')
 export class InteractionController {
   constructor(private readonly interactionService: InteractionService) {}
 
   @UseGuards(JwtAuthGuard)
+  @UseInterceptors(InteractionErrorsInterceptor)
   @Post()
   create(@Body() dto: CreateInteractionDto, @UserId() userId: number) {
     return this.interactionService.create(dto, userId);
@@ -37,7 +41,7 @@ export class InteractionController {
   @UseGuards(JwtAuthGuard)
   @Get()
   findAll(@Query() dto: FilterInteractionDtoWithPagination) {
-    return this.interactionService.findAndCount(dto);
+    return this.interactionService.findAll(dto);
   }
 
   @UseGuards(JwtAuthGuard)

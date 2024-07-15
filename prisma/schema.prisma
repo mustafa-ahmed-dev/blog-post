@@ -123,10 +123,10 @@ model BlogInteraction {
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp()
 
   // InteractionType M:M Blog
-  interactionType InteractionType @relation(fields: [interactionTypeId], references: [id])
+  interactionType InteractionType @relation(fields: [interactionTypeId], references: [id], onDelete: Cascade)
 
   // InteractionType M:M Blog
-  blog Blog @relation(fields: [blogId], references: [id])
+  blog Blog @relation(fields: [blogId], references: [id], onDelete: Cascade)
 
   // User 1:M Blog
   user User @relation(fields: [userId], references: [id])

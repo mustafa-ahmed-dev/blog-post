@@ -20,10 +20,6 @@ export class InteractionService {
     private readonly prismaService: CustomPrismaService<ExtendedPrismaClient>,
   ) {}
 
-  count(where?: FilterInteractionDto) {
-    return this.prismaService.client.blogInteraction.count({ where });
-  }
-
   create(dto: CreateInteractionDto, userId: number) {
     return this.prismaService.client.blogInteraction.create({
       data: {
@@ -62,23 +58,6 @@ export class InteractionService {
       WHERE blog_id = ${blogId}
       GROUP BY interactions.interaction_type_id, interaction_types.name, interaction_types.interaction
     `;
-  }
-
-  async findAndCount(dto: FilterInteractionDtoWithPagination) {
-    const [[users, pagination], count] = await Promise.all([
-      this.findAll(dto),
-      this.count(dto),
-    ]);
-
-    const data = [
-      users,
-      {
-        ...pagination,
-        count,
-      },
-    ] as const;
-
-    return data;
   }
 
   findOne(id: string) {

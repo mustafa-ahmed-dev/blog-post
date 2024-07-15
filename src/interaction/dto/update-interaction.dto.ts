@@ -1,4 +1,6 @@
-import { PartialType } from '@nestjs/swagger';
+import { OmitType, PartialType } from '@nestjs/swagger';
 import { CreateInteractionDto } from './create-interaction.dto';
 
-export class UpdateInteractionDto extends PartialType(CreateInteractionDto) {}
+export class UpdateInteractionDto extends PartialType(
+  OmitType(CreateInteractionDto, ['blogId']),
+) {}
