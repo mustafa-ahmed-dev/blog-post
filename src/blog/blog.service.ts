@@ -7,6 +7,7 @@ import { InteractionService } from '@/interaction/interaction.service';
 
 import { UpdateBlogDto } from './dto/update-blog.dto';
 import { CreateBlogWithoutAuthorDto } from './dto/create-blog-without-author.dto';
+import { FilterBlogDto } from './dto/filter-blog.dto';
 
 @Injectable()
 export class BlogService {
@@ -25,24 +26,28 @@ export class BlogService {
     });
   }
 
-  findAll() {
+  findAll(dto: FilterBlogDto) {
+    const { page, limit, ...data } = dto;
+
     const pagination = {
-      page: 1,
-      limit: 10,
+      page,
+      limit,
       includePageCount: true,
     };
 
-    return this.prismaService.client.blog.paginate().withPages(pagination);
+    return this.prismaService.client.blog
+      .paginate({
+        where: data,
+      })
+      .withPages(pagination);
   }
 
-  countInteractions(id: number) {
-    this.prismaService.client.$queryRaw`
-      SELECT
-        interaction_type as interactionType,
-        COUNT(*)
-      WHERE blog_id = ${id},
-      GROUP BY interactionType
-    `;
+  findInteractions(id: number) {
+    return this.prismaService.client.blogInteraction.findMany({
+      where: {
+        blogId: id,
+      },
+    });
   }
 
   async findOne(id: number) {

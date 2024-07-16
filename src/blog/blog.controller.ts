@@ -11,13 +11,15 @@ import {
   HttpCode,
   ParseIntPipe,
   UseInterceptors,
+  Query,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { BlogService } from './blog.service';
 
 import { UpdateBlogDto } from './dto/update-blog.dto';
 import { CreateBlogWithoutAuthorDto } from './dto/create-blog-without-author.dto';
+import { FilterBlogDto } from './dto/filter-blog.dto';
 
 import { BlogOwnershipGuard } from './guards/blog-ownership.guard';
 import { JwtAuthGuard } from '@/common/guards/jwt.guard';
@@ -36,8 +38,11 @@ export class BlogController {
   }
 
   @Get()
-  findAll() {
-    return this.blogService.findAll();
+  @ApiQuery({
+    type: FilterBlogDto,
+  })
+  findAll(@Query() dto: FilterBlogDto) {
+    return this.blogService.findAll(dto);
   }
 
   @Get(':id')
@@ -46,7 +51,9 @@ export class BlogController {
   }
 
   @Get(':id/interactions')
-  getNumberInteractions(@Param('id', ParseIntPipe) id: number) {}
+  findInteractions(@Param('id', ParseIntPipe) id: number) {
+    return this.blogService.findInteractions(id);
+  }
 
   @UseGuards(JwtAuthGuard, BlogOwnershipGuard)
   @Patch(':id')

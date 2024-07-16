@@ -23,7 +23,7 @@ export class UserFiltersDto extends PaginationDto {
   username?: string;
 
   @IsOptional()
-  @IsEmail()
+  // @IsEmail()
   email?: string;
 
   @ApiPropertyOptional({

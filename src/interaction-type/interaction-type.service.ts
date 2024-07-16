@@ -4,6 +4,7 @@ import { CustomPrismaService } from 'nestjs-prisma';
 
 import { CreateInteractionTypeDto } from './dto/create-interaction-type.dto';
 import { UpdateInteractionTypeDto } from './dto/update-interaction-type.dto';
+import { FilterInteractionTypeDto } from './dto/filter-interaction-type.dto';
 
 @Injectable()
 export class InteractionTypeService {
@@ -18,15 +19,17 @@ export class InteractionTypeService {
     });
   }
 
-  findAll() {
+  findAll(dto: FilterInteractionTypeDto) {
+    const { page, limit, ...data } = dto;
+
     const pagination = {
-      page: 1,
-      limit: 10,
+      page,
+      limit,
       includePageCount: true,
     };
 
     return this.prismaService.client.interactionType
-      .paginate()
+      .paginate({ where: data })
       .withPages(pagination);
   }
 

@@ -8,8 +8,9 @@ import {
   Delete,
   ParseIntPipe,
   UseGuards,
+  Query,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { InteractionTypeService } from './interaction-type.service';
 
@@ -22,6 +23,7 @@ import { RolesGuard } from '@/common/guards/roles.guard';
 import { Roles } from '@/common/decorators/roles.decorator';
 
 import { managerialRoles } from '@/common/constants/user-roles.constant';
+import { FilterInteractionTypeDto } from './dto/filter-interaction-type.dto';
 
 @ApiTags('interaction-types')
 @Controller('interaction-types')
@@ -38,9 +40,12 @@ export class InteractionTypeController {
   }
 
   @Get()
+  @ApiQuery({
+    type: FilterInteractionTypeDto,
+  })
   @UseGuards(JwtAuthGuard)
-  findAll() {
-    return this.interactionTypeService.findAll();
+  findAll(@Query() dto: FilterInteractionTypeDto) {
+    return this.interactionTypeService.findAll(dto);
   }
 
   @Get(':id')

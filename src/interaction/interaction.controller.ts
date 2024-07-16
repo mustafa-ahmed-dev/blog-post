@@ -11,7 +11,7 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { InteractionService } from './interaction.service';
 
@@ -40,6 +40,9 @@ export class InteractionController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
+  @ApiQuery({
+    type: FilterInteractionDtoWithPagination,
+  })
   findAll(@Query() dto: FilterInteractionDtoWithPagination) {
     return this.interactionService.findAll(dto);
   }

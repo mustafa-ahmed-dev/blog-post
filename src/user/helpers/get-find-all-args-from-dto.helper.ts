@@ -5,13 +5,14 @@ import { UserFiltersDto } from '../dto/filter-user.dto';
 
 class Args extends OmitType(UserFiltersDto, ['limit', 'page']) {}
 
-export const getFindAllArgsFromDto = (args: Args) => {
-  const { name, username, email, dateOfBirth } = args;
+export const getFindAllArgsFromDto = (dto: Args) => {
+  const { name, username, email, dateOfBirth } = dto;
 
-  const filters: Prisma.UserWhereInput = {};
+  let filters: Prisma.UserWhereInput = {};
 
   if (name) {
     filters.details = {
+      ...filters.details,
       OR: [
         {
           firstName: {
@@ -32,21 +33,33 @@ export const getFindAllArgsFromDto = (args: Args) => {
           },
         },
       ],
+    } as Prisma.UserWhereInput['details'];
+  }
+
+  if (dateOfBirth) {
+    filters.details = {
+      ...filters.details,
       dateOfBirth,
-    };
+    } as Prisma.UserWhereInput['details'];
   }
 
   if (username) {
-    filters.username = {
-      contains: username,
-      mode: 'insensitive',
+    filters = {
+      ...filters,
+      username: {
+        contains: username,
+        mode: 'insensitive',
+      },
     };
   }
 
   if (email) {
-    filters.email = {
-      contains: email,
-      mode: 'insensitive',
+    filters = {
+      ...filters,
+      email: {
+        contains: email,
+        mode: 'insensitive',
+      },
     };
   }
 
